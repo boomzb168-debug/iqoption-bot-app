@@ -8,15 +8,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      
+      - uses: actions/checkout@v3
+
       - name: Build with Buildozer
-        uses: kivy/buildozer-action@master
+        uses: ArtemSBulgakov/buildozer-action@v1
         with:
           command: android debug
-          
+          buildozer_version: master
+
       - name: Upload APK
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         with:
-          name: package
+          name: iqbot-apk
           path: bin/*.apk
