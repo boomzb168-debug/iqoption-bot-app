@@ -6,26 +6,16 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.10'
-
-      - name: Install Dependencies
-        run: |
-          sudo apt update
-          sudo apt install -y git zip unzip openjdk-17-jdk python3-pip autoconf libtool pkg-config zlib1g-dev libncurses5-dev libncursesw5-dev cmake libffi-dev libssl-dev ccache
-          pip install --upgrade pip
-          pip install Cython==0.29.33 buildozer
-
       - name: Build with Buildozer
-        run: |
-          yes | buildozer -v android debug
+        uses: ArtemSBulgakov/buildozer-action@v1
+        with:
+          command: android debug
+          buildozer_version: master
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
