@@ -10,8 +10,8 @@ version = 0.1
 requirements = python3,kivy,requests,urllib3,certifi,idna,charset-normalizer
 
 orientation = portrait
-android.api = 33
+android.api = 31
 android.minapi = 21
 android.sdk_accept_license = True
-android.build_tools_version = 33.0.0
+android.build_tools_version = 30.0.3
 android.permissions = INTERNET
